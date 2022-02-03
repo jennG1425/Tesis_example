@@ -1,0 +1,114 @@
+\begin{lstlisting}
+Newton
+
+In[370]:= NwAJ1 = NonlinearModelFit[wAJ1, Exp[-k  r], k, r, Method -> NMinimize];
+NwAJ1["BestFitParameters"]
+NwAJ1["ParameterTable"];
+vNwAJ1 = NwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vNwAJ1[[1, 1]]];
+
+Out[371]= {k -> -0.0134066}
+
+Henderson and Pabis
+
+In[229]:= HPwAJ1 = NonlinearModelFit[wAJ1, a Exp[-(k r)], {a, k}, r, 
+   Method -> NMinimize];
+HPwAJ1["BestFitParameters"]
+HPwAJ1["ParameterTable"];
+vHPwAJ1 = HPwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vHPwAJ1[[1, 1]]];
+
+Out[230]= {a -> 218.825, k -> 0.00135116}
+
+Logarithmic
+
+In[235]:= LwAJ1 = NonlinearModelFit[wAJ1, a Exp[-(k x)] + s, {a, k, s}, x, 
+   Method -> NMinimize];
+LwAJ1["BestFitParameters"]
+LwAJ1["ParameterTable"];
+vLwAJ1 = LwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vLwAJ1[[1, 1]]];
+
+Out[236]= {a -> 162.717, k -> 0.00223173, s -> 60.7403}
+
+Two-term
+
+In[328]:= TtwAJ1 = NonlinearModelFit[wAJ1, a Exp[-(k r)] + v Exp[-k1 r], {a, k, v, k1}, 
+   r, Method -> NMinimize];
+TtwAJ1["BestFitParameters"]
+TtwAJ1["ParameterTable"];
+vTtwAJ1 = TtwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vTtwAJ1[[1, 1]]];
+
+Out[329]= {a -> 104.388, k -> 17.2617, v -> 214.118, k1 -> 0.00126168}
+
+
+Two-term exp
+
+In[334]:= TtEwAJ1 = NonlinearModelFit[wAJ1, 
+   a Exp[-(k r)] + (1 - a) Exp[-k1 r], {a, k, k1}, r, Method -> NMinimize];
+TtEwAJ1["BestFitParameters"]
+TtEwAJ1["ParameterTable"];
+vTtEwAJ1 = 
+  TtEwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vTtEwAJ1[[1, 1]]];
+Out[335]= {a -> -210.097, k -> 6.40243, k1 -> 0.00120377}
+
+During evaluation of In[334]:= General::stop: Further output of General::munfl will be suppressed during this calculation.
+
+Midilli and Kukuck
+
+In[253]:= MKwAJ1 = NonlinearModelFit[wAJ1, a Exp[-(k r)] + v r, {a, k, v}, r, 
+   Method -> NMinimize];
+MKwAJ1["BestFitParameters"]
+MKwAJ1["ParameterTable"];
+vMKwAJ1 = MKwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vMKwAJ1[[1, 1]]];
+
+Out[254]= {a -> 278.421, k -> 0.00692511, v -> 0.363637}
+
+Wang and Singh
+
+In[259]:= WwAJ1 = NonlinearModelFit[wAJ1, 1 + a r + b r^2, {a, b}, r, 
+   Method -> NMinimize];
+WwAJ1["BestFitParameters"]
+WwAJ1["ParameterTable"];
+vWwAJ1 = WwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vWwAJ1[[1, 1]]];
+
+During evaluation of In[259]:= NonlinearModelFit::lmnl: The model 1+a r+b r^2 is linear in the parameters {a,b}, but a nonlinear method or non-Euclidean norm was specified, so nonlinear methods will be used.
+
+Out[260]= {a -> 1.58327, b -> -0.00330745}
+
+Primer Orden
+
+In[265]:= POwAJ1 = NonlinearModelFit[wAJ1, (a + (b* r))/(1 + (c * r)), {a, b, c}, r, 
+   Method -> NMinimize];
+POwAJ1["BestFitParameters"]
+POwAJ1["ParameterTable"];
+vPOwAJ1 = POwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vPOwAJ1[[1, 1]]];
+
+Out[266]= {a -> 346.835, b -> 6.63127, c -> 0.0491346}
+
+Segundo Orden
+
+In[271]:= SOwAJ1 = NonlinearModelFit[wAJ1, (a + (b* r) + (c*( r^2)))/(
+   1 + (d r) + ( e (r^2))), {a, b, c, d, e}, r, Method -> NMinimize];
+SOwAJ1["BestFitParameters"]
+SOwAJ1["ParameterTable"];
+vSOwAJ1 = SOwAJ1[{"MeanPredictionConfidenceIntervalTable", 
+    "SinglePredictionConfidenceIntervalTable"}];
+Normal[vSOwAJ1[[1, 1]]];
+
+Out[272]= {a -> 328.87, b -> 25.6664, c -> 0.756661, d -> 0.0728934, e -> 0.00540491}
+
+\end{lstlisting}
